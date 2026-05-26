@@ -91,7 +91,7 @@ public class PacienteService {
         return pacienteRepository.save(paciente);
     }
 
-    // ── Cambiar estado ──
+    // Cambiar estado
     public Paciente cambiarEstado(Long id, String estado) {
         Paciente paciente = pacienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(
