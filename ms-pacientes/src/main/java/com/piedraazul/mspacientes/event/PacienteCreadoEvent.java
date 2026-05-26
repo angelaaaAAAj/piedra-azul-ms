@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 // ══════════════════════════════════════════════════════
 // PATRÓN GOF: OBSERVER
 // Este evento notifica a otros microservicios (auditoria)
-// que un nuevo paciente fue registrado en el sistema.
+// que un nuevo paciente fue registrado en el sistema
 // ══════════════════════════════════════════════════════
 @Data
 @AllArgsConstructor
