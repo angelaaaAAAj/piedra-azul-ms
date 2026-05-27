@@ -102,4 +102,12 @@ public class PacienteController {
                     .body(Map.of("error", e.getMessage()));
         }
     }
+    // ── GET /api/pacientes/{id} ──
+    // Busca paciente por ID (usado por ms-agenda)
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
+        return pacienteService.buscarPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

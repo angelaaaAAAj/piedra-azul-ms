@@ -22,12 +22,19 @@ public class CitaService {
     private final CitaRepository citaRepository;
     private final MedicoRepository medicoRepository;
     private final ApplicationEventPublisher eventPublisher;
+    private final PacienteClientService pacienteClientService;
 
     // Mapa de estrategias disponibles (patrón Strategy)
     private final Map<String, AgendamientoStrategy> estrategias;
 
     // ── Agendar cita usando Strategy (GoF) ──
     public Cita agendar(CitaDTO dto) {
+
+        // Verifica que el paciente existe en ms-pacientes
+        if (!pacienteClientService.existePaciente(dto.getPacienteId())) {
+            throw new RuntimeException(
+                    "Paciente no encontrado en el sistema: " + dto.getPacienteId());
+        }
 
         Medico medico = medicoRepository.findById(dto.getMedicoId())
                 .orElseThrow(() -> new RuntimeException(

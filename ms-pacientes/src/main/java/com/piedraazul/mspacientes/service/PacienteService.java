@@ -100,4 +100,9 @@ public class PacienteService {
         paciente.setEstado(EstadoPaciente.valueOf(estado.toUpperCase()));
         return pacienteRepository.save(paciente);
     }
+
+    // ── Buscar por ID ──
+    public Optional<Paciente> buscarPorId(Long id) {
+        return pacienteRepository.findById(id);
+    }
 }
