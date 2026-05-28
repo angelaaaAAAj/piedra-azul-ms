@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 // ══════════════════════════════════════════════════════
 // Configuración del cliente HTTP para comunicación
-// entre microservicios (ms-agenda → ms-pacientes)
+// entre microservicios (ms-agenda → ms-paciente)----
 // ══════════════════════════════════════════════════════
 @Configuration
 public class RestTemplateConfig {
