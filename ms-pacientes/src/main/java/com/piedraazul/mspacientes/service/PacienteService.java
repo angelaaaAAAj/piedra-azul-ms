@@ -10,7 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import com.piedraazul.mspacientes.model.PacienteFactory;
-
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +41,7 @@ public class PacienteService {
         Paciente paciente = PacienteFactory.crearDesdeDTO(dto);
 
         Paciente guardado = pacienteRepository.save(paciente);
+        enviarAuditoriaPacienteRegistrado(guardado, origen);
 
         eventPublisher.publishEvent(new PacienteCreadoEvent(
                 guardado.getId(),
@@ -109,7 +113,37 @@ public class PacienteService {
         paciente.setEstado(EstadoPaciente.valueOf(estado.toUpperCase()));
         return pacienteRepository.save(paciente);
     }
+    private void enviarAuditoriaPacienteRegistrado(Paciente paciente, String origen) {
+        try {
+            String json = """
+                {
+                  "tipoEvento": "PACIENTE_REGISTRADO",
+                  "descripcion": "Se registró el paciente %s %s",
+                  "entidadId": "%s",
+                  "realizadoPor": "%s",
+                  "microservicioOrigen": "ms-pacientes"
+                }
+                """.formatted(
+                    paciente.getNombre(),
+                    paciente.getApellido(),
+                    paciente.getId(),
+                    origen
+            );
 
+            HttpClient client = HttpClient.newHttpClient();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://localhost:8085/api/auditoria"))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        } catch (Exception e) {
+            System.out.println("No se pudo enviar auditoría: " + e.getMessage());
+        }
+    }
     public Optional<Paciente> buscarPorId(Long id) {
         return pacienteRepository.findById(id);
     }
