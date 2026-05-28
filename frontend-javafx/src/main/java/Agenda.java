@@ -1,3 +1,6 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Agenda {
 
     private Long id;
@@ -49,3 +52,4 @@ public class Agenda {
         this.estado = estado;
     }
 }
+

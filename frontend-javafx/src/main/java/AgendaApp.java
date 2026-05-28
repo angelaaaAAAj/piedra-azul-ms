@@ -7,6 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.util.Arrays;
 
 public class AgendaApp extends Application {
 
@@ -69,13 +70,13 @@ public class AgendaApp extends Application {
                 new PropertyValueFactory<>("estado")
         );
 
-        tabla.getColumns().addAll(
+        tabla.getColumns().addAll(Arrays.asList(
                 colId,
                 colPaciente,
                 colFecha,
                 colHora,
                 colEstado
-        );
+        ));
 
         tabla.setItems(citas);
 
