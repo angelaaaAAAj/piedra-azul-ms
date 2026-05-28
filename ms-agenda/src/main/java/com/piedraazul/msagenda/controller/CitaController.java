@@ -2,6 +2,7 @@ package com.piedraazul.msagenda.controller;
 
 import com.piedraazul.msagenda.dto.CitaDTO;
 import com.piedraazul.msagenda.model.Cita;
+import com.piedraazul.msagenda.repository.CitaRepository;
 import com.piedraazul.msagenda.service.CitaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class CitaController {
 
     private final CitaService citaService;
+    private final CitaRepository citaRepository;
 
     // ── POST /api/citas ──
     // Agenda una cita (HU-10 agendamiento autónomo)
@@ -77,5 +79,14 @@ public class CitaController {
             return ResponseEntity.badRequest()
                     .body(Map.of("error", e.getMessage()));
         }
+    }
+
+    // ── GET /api/citas/{id} ──
+    // Busca cita por ID (usado por ms-historial)
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable Long id) {
+        return citaRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

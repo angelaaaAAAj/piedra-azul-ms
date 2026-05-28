@@ -5,6 +5,7 @@ import com.piedraazul.mshistorial.event.HistorialModificadoEvent;
 import com.piedraazul.mshistorial.model.*;
 import com.piedraazul.mshistorial.repository.CambioAgendaRepository;
 import com.piedraazul.mshistorial.repository.HistorialRepository;
+import com.piedraazul.mshistorial.service.CitaClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,16 @@ public class HistorialService {
     private final HistorialRepository historialRepository;
     private final CambioAgendaRepository cambioAgendaRepository;
     private final ApplicationEventPublisher eventPublisher;
+    private final CitaClientService citaClientService;
 
     // ── Registrar entrada en historial clínico ──
     public HistorialClinico registrar(HistorialDTO dto) {
+
+        // Verifica que la cita existe en ms-agenda
+        if (!citaClientService.existeCita(dto.getCitaId())) {
+            throw new RuntimeException(
+                    "Cita no encontrada en el sistema: " + dto.getCitaId());
+        }
 
         HistorialClinico historial = new HistorialClinico();
         historial.setPacienteId(dto.getPacienteId());
