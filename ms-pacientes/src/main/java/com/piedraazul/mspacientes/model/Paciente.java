@@ -31,14 +31,16 @@ public class Paciente {
     @Column(nullable = false, unique = true)
     private String numeroDocumento;
 
-    @Column(nullable = false)
+    // Opcional según requisito
+    @Column(nullable = true)
     private LocalDate fechaNacimiento;
 
+    // Opcional según requisito
     @Email
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String email;
 
-    @Column
+    @Column(nullable = false)
     private String telefono;
 
     @Column
@@ -50,4 +52,8 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoPaciente estado = EstadoPaciente.ACTIVO;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Genero genero;
 }
