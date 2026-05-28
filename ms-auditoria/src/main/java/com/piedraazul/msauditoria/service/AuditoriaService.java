@@ -17,7 +17,7 @@ public class AuditoriaService {
     private final AuditoriaRepository auditoriaRepository;
     private final AuditoriaObserver auditoriaObserver;
 
-    // ── Registrar evento usando Observer (GoF) ──
+    // -- Registrar evento usando Observer (GoF) --
     public RegistroAuditoria registrar(TipoEvento tipoEvento,
                                        String descripcion,
                                        Long entidadId,
@@ -36,28 +36,28 @@ public class AuditoriaService {
         return registro;
     }
 
-    // ── Listar todos los registros ──
+    // -- Listar todos los registros --
     public List<RegistroAuditoria> listarTodos() {
         return auditoriaRepository.findAll();
     }
 
-    // ── Listar por tipo de evento ──
+    // -- Listar por tipo de evento --
     public List<RegistroAuditoria> listarPorTipo(String tipoEvento) {
         TipoEvento tipo = TipoEvento.valueOf(tipoEvento.toUpperCase());
         return auditoriaRepository.findByTipoEvento(tipo);
     }
 
-    // ── Listar por usuario ──
+    // -- Listar por usuario --
     public List<RegistroAuditoria> listarPorUsuario(String usuario) {
         return auditoriaRepository.findByRealizadoPor(usuario);
     }
 
-    // ── Listar por microservicio ──
+    // -- Listar por microservicio --
     public List<RegistroAuditoria> listarPorMicroservicio(String microservicio) {
         return auditoriaRepository.findByMicroservicioOrigen(microservicio);
     }
 
-    // ── Listar por rango de fechas ──
+    // -- Listar por rango de fechas --
     public List<RegistroAuditoria> listarPorFechas(String inicio, String fin) {
         return auditoriaRepository.findByFechaEventoBetween(
                 LocalDateTime.parse(inicio),

@@ -43,7 +43,7 @@ class HistorialServiceTest {
     @InjectMocks
     private HistorialService historialService;
 
-    // ── Test 1: Memento guarda estado anterior correctamente ──
+    // -- Test 1: Memento guarda estado anterior correctamente --
     @Test
     void testMemento_GuardaEstadoAnterior() {
         LocalDateTime fechaAnterior = LocalDateTime.of(2026, 5, 27, 8, 30);
@@ -58,7 +58,7 @@ class HistorialServiceTest {
         assertNotNull(memento.getFechaCaptura());
     }
 
-    // ── Test 2: Reagendamiento persiste el cambio ──
+    // -- Test 2: Reagendamiento persiste el cambio --
     @Test
     void testRegistrarReagendamiento_PersisteCambio() {
         LocalDateTime fechaAnterior = LocalDateTime.of(2026, 5, 27, 8, 30);
@@ -83,7 +83,7 @@ class HistorialServiceTest {
         verify(cambioAgendaRepository, times(1)).save(any(CambioAgenda.class));
     }
 
-    // ── Test 3: Listar cambios por cita ──
+    // -- Test 3: Listar cambios por cita --
     @Test
     void testListarCambiosPorCita_RetornaLista() {
         CambioAgenda cambio = new CambioAgenda();
@@ -99,7 +99,7 @@ class HistorialServiceTest {
         assertEquals(1, resultado.size());
     }
 
-    // ── Test 4: Cita no encontrada lanza excepción en historial ──
+    // -- Test 4: Cita no encontrada lanza excepción en historial --
     @Test
     void testRegistrar_CitaNoExiste_LanzaExcepcion() {
         when(citaClientService.existeCita(99L)).thenReturn(false);

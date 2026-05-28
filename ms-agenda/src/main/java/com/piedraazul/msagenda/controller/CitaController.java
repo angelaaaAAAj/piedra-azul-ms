@@ -21,7 +21,7 @@ public class CitaController {
     private final CitaService citaService;
     private final CitaRepository citaRepository;
 
-    // ── POST /api/citas ──
+    // -- POST /api/citas --
     // Agenda una cita (HU-10 agendamiento autónomo)
     @PostMapping
     public ResponseEntity<?> agendar(@Valid @RequestBody CitaDTO dto) {
@@ -34,28 +34,28 @@ public class CitaController {
         }
     }
 
-    // ── GET /api/citas ──
+    // -- GET /api/citas --
     // Lista todas las citas
     @GetMapping
     public ResponseEntity<List<Cita>> listarTodas() {
         return ResponseEntity.ok(citaService.listarTodas());
     }
 
-    // ── GET /api/citas/medico/{medicoId} ──
+    // -- GET /api/citas/medico/{medicoId} --
     // Lista citas por médico (HU-07)
     @GetMapping("/medico/{medicoId}")
     public ResponseEntity<List<Cita>> listarPorMedico(@PathVariable Long medicoId) {
         return ResponseEntity.ok(citaService.listarPorMedico(medicoId));
     }
 
-    // ── GET /api/citas/paciente/{pacienteId} ──
+    // -- GET /api/citas/paciente/{pacienteId} --
     // Lista citas por paciente
     @GetMapping("/paciente/{pacienteId}")
     public ResponseEntity<List<Cita>> listarPorPaciente(@PathVariable Long pacienteId) {
         return ResponseEntity.ok(citaService.listarPorPaciente(pacienteId));
     }
 
-    // ── PATCH /api/citas/{id}/cancelar ──
+    // -- PATCH /api/citas/{id}/cancelar --
     // Cancela una cita
     @PatchMapping("/{id}/cancelar")
     public ResponseEntity<?> cancelar(@PathVariable Long id) {
@@ -67,7 +67,7 @@ public class CitaController {
         }
     }
 
-    // ── PATCH /api/citas/{id}/reagendar ──
+    // -- PATCH /api/citas/{id}/reagendar --
     // Reagenda una cita (HU-04b)
     @PatchMapping("/{id}/reagendar")
     public ResponseEntity<?> reagendar(@PathVariable Long id,
@@ -81,7 +81,7 @@ public class CitaController {
         }
     }
 
-    // ── GET /api/citas/{id} ──
+    // -- GET /api/citas/{id} --
     // Busca cita por ID (usado por ms-historial)
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {

@@ -27,7 +27,7 @@ public class CitaService {
     // Mapa de estrategias disponibles (patrón Strategy)
     private final Map<String, AgendamientoStrategy> estrategias;
 
-    // ── Agendar cita usando Strategy (GoF) ──
+    // -- Agendar cita usando Strategy (GoF) --
     public Cita agendar(CitaDTO dto) {
 
         // Verifica que el paciente existe en ms-pacientes
@@ -95,7 +95,7 @@ public class CitaService {
         return guardada;
     }
 
-    // ── Cancelar cita ──
+    // -- Cancelar cita --
     public Cita cancelar(Long id) {
         Cita cita = citaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cita no encontrada: " + id));
@@ -103,7 +103,7 @@ public class CitaService {
         return citaRepository.save(cita);
     }
 
-    // ── Reagendar cita ──
+    // -- Reagendar cita --
     public Cita reagendar(Long id, String nuevaFechaHora) {
         Cita cita = citaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cita no encontrada: " + id));
@@ -120,17 +120,17 @@ public class CitaService {
         return citaRepository.save(cita);
     }
 
-    // ── Listar citas por médico ──
+    // -- Listar citas por médico --
     public List<Cita> listarPorMedico(Long medicoId) {
         return citaRepository.findByMedicoId(medicoId);
     }
 
-    // ── Listar citas por paciente ──
+    // -- Listar citas por paciente --
     public List<Cita> listarPorPaciente(Long pacienteId) {
         return citaRepository.findByPacienteId(pacienteId);
     }
 
-    // ── Listar todas ──
+    // -- Listar todas --
     public List<Cita> listarTodas() {
         return citaRepository.findAll();
     }

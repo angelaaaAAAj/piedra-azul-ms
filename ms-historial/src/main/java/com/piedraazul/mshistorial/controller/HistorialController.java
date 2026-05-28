@@ -21,7 +21,7 @@ public class HistorialController {
 
     private final HistorialService historialService;
 
-    // ── POST /api/historial ──
+    // -- POST /api/historial --
     // Registra una entrada en el historial clínico
     @PostMapping
     public ResponseEntity<?> registrar(@Valid @RequestBody HistorialDTO dto) {
@@ -34,7 +34,7 @@ public class HistorialController {
         }
     }
 
-    // ── POST /api/historial/reagendamiento ──
+    // -- POST /api/historial/reagendamiento --
     // Registra un cambio de agenda con Memento (HU-04b)
     @PostMapping("/reagendamiento")
     public ResponseEntity<?> registrarReagendamiento(
@@ -56,7 +56,7 @@ public class HistorialController {
         }
     }
 
-    // ── GET /api/historial/paciente/{pacienteId} ──
+    // -- GET /api/historial/paciente/{pacienteId} --
     // Consulta historial clínico de un paciente
     @GetMapping("/paciente/{pacienteId}")
     public ResponseEntity<List<HistorialClinico>> listarPorPaciente(
@@ -64,7 +64,7 @@ public class HistorialController {
         return ResponseEntity.ok(historialService.listarPorPaciente(pacienteId));
     }
 
-    // ── GET /api/historial/cita/{citaId} ──
+    // -- GET /api/historial/cita/{citaId} --
     // Consulta historial de una cita específica
     @GetMapping("/cita/{citaId}")
     public ResponseEntity<List<HistorialClinico>> listarPorCita(
@@ -72,7 +72,7 @@ public class HistorialController {
         return ResponseEntity.ok(historialService.listarPorCita(citaId));
     }
 
-    // ── GET /api/historial/cambios/cita/{citaId} ──
+    // -- GET /api/historial/cambios/cita/{citaId} --
     // Consulta cambios de agenda de una cita (Memento)
     @GetMapping("/cambios/cita/{citaId}")
     public ResponseEntity<List<CambioAgenda>> listarCambiosPorCita(
@@ -80,7 +80,7 @@ public class HistorialController {
         return ResponseEntity.ok(historialService.listarCambiosPorCita(citaId));
     }
 
-    // ── GET /api/historial/cambios/paciente/{pacienteId} ──
+    // -- GET /api/historial/cambios/paciente/{pacienteId} --
     // Consulta todos los reagendamientos de un paciente
     @GetMapping("/cambios/paciente/{pacienteId}")
     public ResponseEntity<List<CambioAgenda>> listarCambiosPorPaciente(

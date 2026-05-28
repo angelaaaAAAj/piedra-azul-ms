@@ -21,7 +21,7 @@ public class PacienteController {
 
     private final PacienteService pacienteService;
 
-    // ── POST /api/pacientes/registro ──
+    // -- POST /api/pacientes/registro --
     // Registro autónomo por el paciente (HU-09)
     @PostMapping("/registro")
     public ResponseEntity<?> registrar(@Valid @RequestBody PacienteDTO dto) {
@@ -34,7 +34,7 @@ public class PacienteController {
         }
     }
 
-    // ── POST /api/pacientes/registro/recepcionista ──
+    // -- POST /api/pacientes/registro/recepcionista --
     // Registro por recepcionista (HU-02)
     @PostMapping("/registro/recepcionista")
     public ResponseEntity<?> registrarPorRecepcionista(@Valid @RequestBody PacienteDTO dto) {
@@ -47,14 +47,14 @@ public class PacienteController {
         }
     }
 
-    // ── GET /api/pacientes ──
+    // -- GET /api/pacientes --
     // Lista todos los pacientes
     @GetMapping
     public ResponseEntity<List<Paciente>> listarTodos() {
         return ResponseEntity.ok(pacienteService.listarTodos());
     }
 
-    // ── GET /api/pacientes/documento/{documento} ──
+    // -- GET /api/pacientes/documento/{documento} --
     // Busca un paciente por número de documento
     @GetMapping("/documento/{documento}")
     public ResponseEntity<?> buscarPorDocumento(@PathVariable String documento) {
@@ -66,7 +66,7 @@ public class PacienteController {
         }
     }
 
-    // ── GET /api/pacientes/estado/{estado} ──
+    // -- GET /api/pacientes/estado/{estado} --
     // Lista pacientes por estado
     @GetMapping("/estado/{estado}")
     public ResponseEntity<?> listarPorEstado(@PathVariable String estado) {
@@ -78,7 +78,7 @@ public class PacienteController {
         }
     }
 
-    // ── PUT /api/pacientes/{id} ──
+    // -- PUT /api/pacientes/{id} --
     // Actualiza datos del paciente
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizar(@PathVariable Long id,
@@ -91,7 +91,7 @@ public class PacienteController {
         }
     }
 
-    // ── PATCH /api/pacientes/{id}/estado ──
+    // -- PATCH /api/pacientes/{id}/estado --
     // Cambia el estado del paciente
     @PatchMapping("/{id}/estado")
     public ResponseEntity<?> cambiarEstado(@PathVariable Long id,
@@ -104,7 +104,13 @@ public class PacienteController {
                     .body(Map.of("error", e.getMessage()));
         }
     }
-    // ── GET /api/pacientes/{id} ──
+    // --GET /api/pacientes/test --
+    @GetMapping("/test")
+    public String test() {
+        return "MS PACIENTES FUNCIONANDO";
+    }
+
+    // --GET /api/pacientes/{id} --
     // Busca paciente por ID (usado por ms-agenda)
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarPorId(@PathVariable Long id) {

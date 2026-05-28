@@ -22,7 +22,7 @@ public class HistorialService {
     private final ApplicationEventPublisher eventPublisher;
     private final CitaClientService citaClientService;
 
-    // ── Registrar entrada en historial clínico ──
+    // -- Registrar entrada en historial clínico --
     public HistorialClinico registrar(HistorialDTO dto) {
 
         // Verifica que la cita existe en ms-agenda
@@ -57,7 +57,7 @@ public class HistorialService {
         return guardado;
     }
 
-    // ── Registrar reagendamiento usando Memento (GoF) ──
+    // -- Registrar reagendamiento usando Memento (GoF) --
     // Guarda el estado anterior antes de cambiar la cita
     public CambioAgenda registrarReagendamiento(Long citaId,
                                                 Long pacienteId,
@@ -101,22 +101,22 @@ public class HistorialService {
         return guardado;
     }
 
-    // ── Consultar historial por paciente ──
+    // -- Consultar historial por paciente --
     public List<HistorialClinico> listarPorPaciente(Long pacienteId) {
         return historialRepository.findByPacienteId(pacienteId);
     }
 
-    // ── Consultar historial por cita ──
+    // -- Consultar historial por cita --
     public List<HistorialClinico> listarPorCita(Long citaId) {
         return historialRepository.findByCitaId(citaId);
     }
 
-    // ── Consultar cambios de agenda por cita ──
+    // -- Consultar cambios de agenda por cita --
     public List<CambioAgenda> listarCambiosPorCita(Long citaId) {
         return cambioAgendaRepository.findByCitaId(citaId);
     }
 
-    // ── Consultar cambios de agenda por paciente ──
+    // -- Consultar cambios de agenda por paciente --
     public List<CambioAgenda> listarCambiosPorPaciente(Long pacienteId) {
         return cambioAgendaRepository.findByPacienteId(pacienteId);
     }
