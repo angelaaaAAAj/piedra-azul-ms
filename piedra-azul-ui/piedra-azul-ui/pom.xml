@@ -44,7 +44,11 @@
       <artifactId>javafx-fxml</artifactId>
       <version>${javafx.version}</version>
     </dependency>
-
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.17.2</version>
+    </dependency>
   </dependencies>
 
   <!-- BUILD -->
@@ -79,7 +83,7 @@
 
           <!-- CLASE PRINCIPAL -->
           <mainClass>
-            com.piedraazul.app.PiedraAzulApp
+            com.piedraazul.ui.auditoria.AuditoriaApp
           </mainClass>
 
         </configuration>
