@@ -106,6 +106,7 @@ public class PacienteApp extends Application {
 
         txtEstadoId.setPromptText("ID del paciente");
 
+
         cbNuevoEstado.getItems().addAll("ACTIVO", "INACTIVO");
         cbNuevoEstado.setPromptText("Nuevo estado");
 
