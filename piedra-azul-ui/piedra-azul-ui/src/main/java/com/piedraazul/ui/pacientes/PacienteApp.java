@@ -197,7 +197,7 @@ public class PacienteApp extends Application {
             HttpClient client = HttpClient.newHttpClient();
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8082/api/pacientes"))
+                    .uri(URI.create("http://localhost:8080/api/pacientes"))
                     .GET()
                     .build();
 
@@ -252,11 +252,11 @@ public class PacienteApp extends Application {
 
             if (pacienteEditandoId == null) {
                 requestBuilder
-                        .uri(URI.create("http://localhost:8082/api/pacientes/registro"))
+                        .uri(URI.create("http://localhost:8080/api/pacientes/registro"))
                         .POST(HttpRequest.BodyPublishers.ofString(json));
             } else {
                 requestBuilder
-                        .uri(URI.create("http://localhost:8082/api/pacientes/" + pacienteEditandoId))
+                        .uri(URI.create("http://localhost:8080/api/pacientes/" + pacienteEditandoId))
                         .PUT(HttpRequest.BodyPublishers.ofString(json));
             }
 
@@ -297,7 +297,7 @@ public class PacienteApp extends Application {
             HttpClient client = HttpClient.newHttpClient();
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8082/api/pacientes/documento/" + documento))
+                    .uri(URI.create("http://localhost:8080/api/pacientes/documento/" + documento))
                     .GET()
                     .build();
 
@@ -340,7 +340,7 @@ public class PacienteApp extends Application {
             HttpClient client = HttpClient.newHttpClient();
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8082/api/pacientes/" + id + "/estado"))
+                    .uri(URI.create("http://localhost:8080/api/pacientes/" + id + "/estado"))
                     .header("Content-Type", "application/json")
                     .method("PATCH", HttpRequest.BodyPublishers.ofString(json))
                     .build();

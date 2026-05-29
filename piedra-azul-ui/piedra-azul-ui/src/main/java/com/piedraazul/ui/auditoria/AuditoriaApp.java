@@ -26,7 +26,7 @@ public class AuditoriaApp extends Application {
     private final TextField txtUsuario = new TextField();
     private final TextField txtMicroservicio = new TextField();
 
-    private final String API_URL = "http://localhost:8085/api/auditoria";
+    private final String API_URL = "http://localhost:8080/api/auditoria";
 
     @Override
     public void start(Stage stage) {
