@@ -1,4 +1,4 @@
-package com.piedraazul.ui;
+package com.piedraazul.ui.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

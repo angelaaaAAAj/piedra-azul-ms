@@ -1,4 +1,4 @@
-package com.piedraazul.mshistorial.ui;
+package com.piedraazul.ui.historial;
 
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
@@ -23,13 +23,13 @@ public class HistorialEntry {
     private final StringProperty registradoPor;
 
     public HistorialEntry(long id,
-                         long pacienteId,
-                         long medicoId,
-                         long citaId,
-                         String tipoRegistro,
-                         String descripcion,
-                         LocalDateTime fechaRegistro,
-                         String registradoPor) {
+                          long pacienteId,
+                          long medicoId,
+                          long citaId,
+                          String tipoRegistro,
+                          String descripcion,
+                          LocalDateTime fechaRegistro,
+                          String registradoPor) {
         this.id = new SimpleLongProperty(id);
         this.pacienteId = new SimpleLongProperty(pacienteId);
         this.medicoId = new SimpleLongProperty(medicoId);
@@ -41,37 +41,14 @@ public class HistorialEntry {
         this.registradoPor = new SimpleStringProperty(registradoPor);
     }
 
-    public LongProperty idProperty() {
-        return id;
-    }
-
-    public LongProperty pacienteIdProperty() {
-        return pacienteId;
-    }
-
-    public LongProperty medicoIdProperty() {
-        return medicoId;
-    }
-
-    public LongProperty citaIdProperty() {
-        return citaId;
-    }
-
-    public StringProperty tipoRegistroProperty() {
-        return tipoRegistro;
-    }
-
-    public StringProperty descripcionProperty() {
-        return descripcion;
-    }
-
-    public StringProperty fechaRegistroProperty() {
-        return fechaRegistro;
-    }
-
-    public StringProperty registradoPorProperty() {
-        return registradoPor;
-    }
+    public LongProperty idProperty() { return id; }
+    public LongProperty pacienteIdProperty() { return pacienteId; }
+    public LongProperty medicoIdProperty() { return medicoId; }
+    public LongProperty citaIdProperty() { return citaId; }
+    public StringProperty tipoRegistroProperty() { return tipoRegistro; }
+    public StringProperty descripcionProperty() { return descripcion; }
+    public StringProperty fechaRegistroProperty() { return fechaRegistro; }
+    public StringProperty registradoPorProperty() { return registradoPor; }
 
     public boolean matches(String query) {
         String lower = query.toLowerCase();
