@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.piedraazul.ui.controller.LoginController"
+            prefWidth="420" prefHeight="520">
+
+    <!-- HEADER -->
+    <top>
+        <VBox alignment="CENTER" spacing="6"
+              style="-fx-background-color: #1E3A5F; -fx-padding: 36 20 30 20;">
+            <Label text="🏥" style="-fx-font-size: 40px;"/>
+            <Label text="Clínica Piedra Azul"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Sistema de Gestión Médica"
+                   style="-fx-font-size: 13px; -fx-text-fill: #90caf9;"/>
+        </VBox>
+    </top>
+
+    <!-- FORMULARIO -->
+    <center>
+        <VBox spacing="16" alignment="CENTER"
+              style="-fx-padding: 36 40 20 40; -fx-background-color: #F4F6F9;">
+
+            <Label text="Iniciar sesión"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #1E3A5F;"/>
+
+            <VBox spacing="4">
+                <Label text="Usuario" style="-fx-text-fill: #1E3A5F; -fx-font-weight: bold;"/>
+                <TextField fx:id="txtUsuario" promptText="Ingresa tu usuario"
+                           style="-fx-padding: 8; -fx-border-color: #bbdefb;
+                                  -fx-border-radius: 4; -fx-background-radius: 4;"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="Contraseña" style="-fx-text-fill: #1E3A5F; -fx-font-weight: bold;"/>
+                <PasswordField fx:id="txtPassword" promptText="Ingresa tu contraseña"
+                               style="-fx-padding: 8; -fx-border-color: #bbdefb;
+                                      -fx-border-radius: 4; -fx-background-radius: 4;"/>
+            </VBox>
+
+            <Label fx:id="lblError" text=""
+                   style="-fx-text-fill: #C62828; -fx-font-size: 12px;"/>
+
+            <Button fx:id="btnLogin" text="Iniciar sesión"
+                    maxWidth="Infinity" prefHeight="42"
+                    onAction="#onLogin"
+                    style="-fx-background-color: #1E3A5F; -fx-text-fill: white;
+                           -fx-font-weight: bold; -fx-font-size: 14px;
+                           -fx-background-radius: 4; -fx-cursor: hand;"/>
+        </VBox>
+    </center>
+
+    <!-- FOOTER -->
+    <bottom>
+        <Label text="© 2026 Clínica Piedra Azul"
+               alignment="CENTER" maxWidth="Infinity"
+               style="-fx-text-fill: #90a4ae; -fx-font-size: 11px;
+                      -fx-padding: 10; -fx-background-color: #F4F6F9;"/>
+    </bottom>
+
+</BorderPane>
